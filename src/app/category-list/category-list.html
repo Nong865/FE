@@ -1,0 +1,27 @@
+<h2>Category List</h2>
+<input [(ngModel)]="filterText" placeholder="Filter by name" />
+<div *ngIf="filterCategories().length > 0; else noCategories">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of filterCategories()">
+        <td>{{ category.id }}</td>
+        <td>{{ category.name }}</td>
+        <td>{{ category.description }}</td>
+        <td [ngStyle]="{ color: category.status === 'active' ? 'green' : 'red' }">
+          {{ category.status }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noCategories>
+  <p>No categories match the filter.</p>
+</ng-template>
