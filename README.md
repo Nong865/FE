@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Lập trình Front-End Framework 1 - WEB2081
 
 # Hướng dẫn cài đặt Angular bản mới nhất và tạo ứng dụng cơ bản
@@ -191,3 +192,7 @@ Angular 19 mang đến nhiều cải tiến so với các phiên bản trước.
 - [Tài liệu React](https://react.dev/)
 
 Chúc bạn thành công với dự án Angular của mình!
+=======
+# FE
+Nhóm 11
+>>>>>>> 64caa363fb8358ff40755fe10ebdf3756cae2b87
