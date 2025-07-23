@@ -1,0 +1,36 @@
+
+<form #productForm="ngForm" (ngSubmit) = "handleSubmit(productForm)">
+<div class="mb-3">
+    <label for="title" class="form-label">Product Title</label>
+    <input 
+        type="text" 
+        class="form-control" 
+        id="title" 
+        name="title" 
+        required
+        minlength="3"
+        [(ngModel)]="product.title"
+        [ngClass]="{'is-invalid': title.invalid && title.touched}"
+        #title="ngModel"
+        />
+        <div *ngIf="title.invalid && title.touched" class="invalid-feedback">
+            <div *ngIf="title.errors?.['required']">Title is required</div>
+        </div>
+</div>
+<div class="mb-3">
+    <label for="image" class="form-label">Product Image</label>
+    <input 
+        type="url" 
+        class="form-control" 
+        id="image"  
+        name="image" 
+        [(ngModel)]="product.image"
+        [ngClass]="{'is-invalid': image.invalid && image.touched}"
+        #image="ngModel"
+        />
+        <div *ngIf="image.invalid && image.touched" class="invalid-feedback">
+            Image URL is required
+        </div>
+</div>
+   <button type="submit" class="btn btn-primary">Submit</button>
+</form>
