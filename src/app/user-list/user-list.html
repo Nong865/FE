@@ -1,29 +1,20 @@
-<h2 class="text-2xl font-bold mb-4">User List</h2>
+<h2>user List</h2>
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-  <table class="w-full text-sm text-left text-gray-800 border border-gray-300">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-100 border-b border-gray-300">
-      <tr>
-        <th class="px-6 py-3 border-r border-gray-300">ID</th>
-        <th class="px-6 py-3 border-r border-gray-300">Name</th>
-        <th class="px-6 py-3 border-r border-gray-300">Email</th>
-        <th class="px-6 py-3">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let user of UserList; let i = index"
-        [class.bg-white]="i % 2 === 0"
-        [class.bg-gray-50]="i % 2 !== 0"
-        class="hover:bg-blue-50 transition duration-150 border-b border-gray-200"
-      >
-        <td class="px-6 py-3 border-r border-gray-200">{{ user.id }}</td>
-        <td class="px-6 py-3 border-r border-gray-200">{{ user.name }}</td>
-        <td class="px-6 py-3 border-r border-gray-200">{{ user.email }}</td>
-        <td class="px-6 py-3 font-semibold text-center" [ngStyle]="{ color: user.isActive ? 'green' : 'red' }">
-          {{ user.isActive ? '✔️ Active' : '❌ Inactive' }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Ten nguoi dung</th>
+      <th>Email</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.ten_nguoi_dung }}</td>
+      <td>{{ user.email }}</td>
+
+    </tr>
+  </tbody>
+</table>

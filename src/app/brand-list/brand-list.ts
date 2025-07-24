@@ -1,40 +1,25 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-brand-list',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './brand-list.html',
-  styleUrls: ['./brand-list.css']
+  styleUrl: './brand-list.css',
 })
 export class BrandList {
-  filterText = '';
-
-  BrandList = [
-    {
-      id: 1,
-      name: 'Nike air foce 1',
-      description: 'Thương hiệu thời trang thể thao hàng đầu',
-    },
-    {
-      id: 2,
-      name: 'MLB',
-      description: 'Thời trang phong cách Mỹ',
-    },
-    {
-      id: 3,
-      name: 'Nike',
-      description: 'Biểu tượng thời trang thể thao toàn cầu',
-    }
+  brands = [
+    { id: 1, ten_thuong_hieu: 'Thương Hiệu A', mo_ta: "Thương hiệu thời trang nổi tiếng với các sản phẩm chất lượng cao.", trang_thai: 1 },
+    { id: 2, ten_thuong_hieu: 'Thương Hiệu B', mo_ta: "Thương hiệu chuyên cung cấp các sản phẩm thời trang hiện đại và phong cách.", trang_thai: 1 },
   ];
 
-  get filteredBrands() {
-    const keyword = this.filterText.toLowerCase();
-    return this.BrandList.filter(brand =>
-      brand.name.toLowerCase().includes(keyword) ||
-      brand.description.toLowerCase().includes(keyword)
+  filterText = '';
+
+  filterbrands() {
+    return this.brands.filter((brand) =>
+      brand.ten_thuong_hieu.toLowerCase().includes(this.filterText.toLowerCase())
     );
   }
 }

@@ -1,34 +1,18 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'category-list',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
+  selector: 'app-category-list',
+  imports: [CommonModule],
   templateUrl: './category-list.html',
-  styleUrl: './category-list.css'
+  styleUrl: './category-list.css',
 })
 export class CategoryList {
-  filterText = '';
-
   categories = [
-    { id: 1, name: 'Category 1' },
-    { id: 2, name: 'Category 2' },
-    { id: 3, name: 'Category 3' },
-    { id: 4, name: 'Category 4' },
-    { id: 5, name: 'Category 5' },
-    { id: 6, name: 'Category 6' },
-    { id: 7, name: 'Category 7' },
-    { id: 8, name: 'Category 8' },
-    { id: 9, name: 'Category 9' },
-    { id: 10, name: 'Category 10' }
+    { id: 1, name: 'Electronics' },
+    { id: 2, name: 'Books' },
+    { id: 3, name: 'Clothing' },
+    { id: 4, name: 'Home & Kitchen' },
+    { id: 5, name: 'Sports & Outdoors' },
   ];
-
-  filterCategories() {
-    const search = this.filterText.toLowerCase();
-    return this.categories.filter(c =>
-      c.name.toLowerCase().includes(search) || c.id.toString().includes(search)
-    );
-  }
 }

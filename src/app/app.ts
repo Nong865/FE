@@ -1,19 +1,14 @@
 import { Component } from '@angular/core';
-import { ProductList } from './product-list/product-list';
-
+import { RouterOutlet } from '@angular/router';
+import { Sidebar } from './sidebar/sidebar';
 
 @Component({
-  imports: [ProductList],
   selector: 'app-root',
-  template: `
-    <h1>Hello, my-angular-app</h1>
-  `,
-  styles: [`
-    h1 {
-      color: green;
-    }
-  `]
+  imports: [RouterOutlet, Sidebar],
+  templateUrl: './app.html',
+  styleUrl: './app.css',
 })
 export class App {
-  name: string = 'my-angular-app';
+  protected title = 'angular-su25';
+  stkChaGuiTien = '100000 trieu';
 }

@@ -1,0 +1,91 @@
+{
+  "product": [
+    {
+      "id": 1,
+      "ten_san_pham": "Áo Sơ Mi Nam Dài Tay Túi Kiểu",
+      "gia_san_pham": 549.0,
+      "gia_khuyen_mai": 549.0,
+      "hinh_anh": "./uploads/17491483081748356826somidaitay.webp",
+      "so_luong": 0,
+      "luot_xem": 10,
+      "ngay_nhap": "2025-06-06",
+      "mo_ta": "Chất liệu: vải sơ mi cotton lóng chéo twill\r\nThành phần:70% Cotton, 30% Tencel",
+      "danh_muc_id": 1,
+      "trang_thai": 1
+    },
+    {
+      "id": 2,
+      "ten_san_pham": "Áo Khoác Nam Bomber Bổ Ngực",
+      "gia_san_pham": 799.0,
+      "gia_khuyen_mai": 799.0,
+      "hinh_anh": "./uploads/174842544717483688601748358335z6645528543498_d30512be39a6b7320200f52638c575dd.jpg",
+      "so_luong": 145,
+      "luot_xem": 20,
+      "ngay_nhap": "2025-05-01",
+      "mo_ta": "Áo khoác bomber nam cá tính với thiết kế bổ ngực trẻ trung, năng động...",
+      "danh_muc_id": 1,
+      "trang_thai": 1
+    },
+    {
+      "id": 3,
+      "ten_san_pham": "Quần Jean Nam Rách Gối",
+      "gia_san_pham": 699.0,
+      "gia_khuyen_mai": 699.0,
+      "hinh_anh": "./uploads/17491483081748356826quanjeanrachgoi.webp",
+      "so_luong": 50,
+      "luot_xem": 15,
+      "ngay_nhap": "2025-06-10",
+      "mo_ta": "Chất liệu: vải jean co giãn, thoáng mát\r\nThiết kế: rách gối thời trang, cá tính",
+      "danh_muc_id": 2,
+      "trang_thai": 1
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "ten_danh_muc": "Thời Trang Nam",
+      "mo_ta": "Các sản phẩm thời trang nam giới, bao gồm áo sơ mi, áo khoác, quần jean, v.v.",
+      "trang_thai": 1
+    },
+    {
+      "id": 2,
+      "ten_danh_muc": "Thời Trang Nữ",
+      "mo_ta": "Các sản phẩm thời trang nữ giới, bao gồm váy, áo, quần, v.v.",
+      "trang_thai": 1
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "ten_nguoi_dung": "Nguyen Van A",
+      "email": "Nguyenvana@gmail.com",
+      "mat_khau": "123456"
+    },
+    {
+      "id": 2,
+      "ten_nguoi_dung": "Tran Thi B",
+      "email": "Tranthib@gmail.com",
+      "mat_khau": "abcdef"
+    },
+    {
+      "id": 3,
+      "ten_nguoi_dung": "Le Van C",
+      "email": "Levanc@gamil.com",
+      "mat_khau": "qwerty"
+    }
+  ],
+  "brand": [
+    {
+      "id": 1,
+      "ten_thuong_hieu": "Thương Hiệu A",
+      "mo_ta": "Thương hiệu thời trang nổi tiếng với các sản phẩm chất lượng cao.",
+      "trang_thai": 1
+    },
+    {
+      "id": 2,
+      "ten_thuong_hieu": "Thương Hiệu B",
+      "mo_ta": "Thương hiệu chuyên cung cấp các sản phẩm thời trang hiện đại và phong cách.",
+      "trang_thai": 1
+    }
+  ]
+}
