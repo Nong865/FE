@@ -1,0 +1,11 @@
+<div class="category-card">
+  <p>Category Id: {{ categoryId }}</p>
+  <h2>{{ category.name }}</h2>
+  <p>Mô tả {{ category.description }}</p>
+  <p *ngIf="category.status; else outOfStatus">
+    Trạng thái: <span class="active">Còn hàng</span>
+  </p>
+  <ng-template #outOfStatus>
+    <p>Trạng thái: <span class="inactive">Hết hàng</span></p>
+  </ng-template>
+</div>

@@ -1,27 +1,37 @@
 <h2>User List</h2>
 <input [(ngModel)]="filterText" placeholder="Filter by name" />
-<div *ngIf="filterCategories().length > 0; else noCategories">
+<div *ngIf="filterUsers().length > 0; else noUser">
   <table>
     <thead>
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th></th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
         <th>Status</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let category of filterCategories()">
-        <td>{{ category.id }}</td>
-        <td>{{ category.name }}</td>
-        <td>{{ category.description }}</td>
-        <td [ngStyle]="{ color: category.status === 'active' ? 'green' : 'red' }">
-          {{ category.status }}
+      <tr *ngFor="let user of filterUsers()">
+        <td>
+          <a [routerLink]="['/user', user.id, 'detail']" >
+            {{ user.id }}
+          </a>
+        </td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <span [ngClass]="user.status ? 'text-success' : 'text-danger'">
+            {{ user.status ? 'Hoạt động' : 'Bị khóa' }}
+          </span>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-<ng-template #noCategories>
-  <p>No categories match the filter.</p>
+<ng-template #noUser>
+  <p>No user match the filter.</p>
 </ng-template>

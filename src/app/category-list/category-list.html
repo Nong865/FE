@@ -12,7 +12,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let category of filterCategories()">
-        <td>{{ category.id }}</td>
+        <td>
+          <a [routerLink]="['/category', category.id, 'detail']" >
+            {{ category.id }}
+          </a>
+        </td>
         <td>{{ category.name }}</td>
         <td>{{ category.description }}</td>
         <td [ngStyle]="{ color: category.status === 'active' ? 'green' : 'red' }">

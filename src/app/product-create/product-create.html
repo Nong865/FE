@@ -1,5 +1,5 @@
 
-<form #productForm="ngForm" (ngSubmit) = "handleSubmit(productForm)">
+<form #productForm="ngForm" (ngSubmit)="handleSubmit(productForm)">
 <div class="mb-3">
     <label for="title" class="form-label">Product Title</label>
     <input 
@@ -20,17 +20,46 @@
 <div class="mb-3">
     <label for="image" class="form-label">Product Image</label>
     <input 
-        type="url" 
+        type="text" 
         class="form-control" 
         id="image"  
         name="image" 
         [(ngModel)]="product.image"
-        [ngClass]="{'is-invalid': image.invalid && image.touched}"
-        #image="ngModel"
         />
-        <div *ngIf="image.invalid && image.touched" class="invalid-feedback">
-            Image URL is required
+</div>
+<div class="mb-3">
+    <label for="price" >Product Price</label>
+    <input 
+        type="number" 
+        class="form-control" 
+        id="price" 
+        name="price" 
+        required
+        min="0"
+        [(ngModel)]="product.price"
+        [ngClass]="{'is-invalid': price.invalid && price.touched}"
+        #price="ngModel"
+        />
+        <div *ngIf="price.invalid && price.touched" class="invalid-feedback">
+            <div *ngIf="price.errors?.['required']">Price is required</div>
+            <div *ngIf="price.errors?.['min']">Price must be non-negative</div>
         </div>
 </div>
-   <button type="submit" class="btn btn-primary">Submit</button>
+<div class="mb-3">
+    <label for="inStock" >In Stock</label>
+    <input 
+        type="checkbox" 
+        class="form-check-input" 
+        id="inStock" 
+        name="inStock" 
+        [(ngModel)]="product.inStock"
+        />
+</div>
+   <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="productForm.invalid"
+  >
+    Submit
+  </button>
 </form>

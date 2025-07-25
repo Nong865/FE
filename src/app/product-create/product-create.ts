@@ -14,9 +14,10 @@ export class ProductCreate {
     image: '',
     price: 0,
     inStock: true
-  }
+  };
   handleSubmit(productForm: NgForm) {
     console.log('productForm',productForm);
-    
+    if(!productForm.invalid){
+    }
   }
 }

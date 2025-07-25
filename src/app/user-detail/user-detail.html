@@ -1,0 +1,36 @@
+<div class="container mt-4" *ngIf="user">
+  <h2 class="mb-4">Chi tiết người dùng</h2>
+
+  <table class="table table-bordered w-75">
+    <tbody>
+      <tr>
+        <th style="width: 30%">ID</th>
+        <td>{{ user.id }}</td>
+      </tr>
+      <tr>
+        <th>Họ tên</th>
+        <td>{{ user.name }}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{ user.email }}</td>
+      </tr>
+      <tr>
+        <th>Số điện thoại</th>
+        <td>{{ user.phone }}</td>
+      </tr>
+      <tr>
+        <th>Vai trò</th>
+        <td>{{ user.role }}</td>
+      </tr>
+      <tr>
+        <th>Trạng thái</th>
+        <td>
+          <span [ngClass]="user.status ? 'text-success' : 'text-danger'">
+            {{ user.status ? 'Hoạt động' : 'Bị khóa' }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

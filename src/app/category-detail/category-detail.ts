@@ -9,13 +9,17 @@ import { ActivatedRoute } from "@angular/router";
     styleUrl: './category-detail.css'
 })
 export class CategoryDetail {
-    catagory = {
+    category = {
         id: 1, 
-        name: 'laptop',
-        price : 1000,
-        image: 'https://fdn.gsmarena.com/imgroot/reviews/24/apple-iphone-16/lifestyle/-1024w2/gsmarena_001.jpg',
-        inStock:  true
+        name: 'Laptop',
+        description : 'Các dòng laptop mới nhất',
+        status: true
     };
-    categoryID: String| null = null;
+    categoryId: string | null = null;
     
+    constructor(private route: ActivatedRoute) {}
+
+    ngOnInit() {
+        this.categoryId = this.route.snapshot.paramMap.get('id');
+    }
 }

@@ -1,11 +1,12 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { RouterLink } from "@angular/router";
 
 @Component({
     selector: 'app-brand-list',
     standalone: true,
-    imports: [CommonModule, FormsModule],
+    imports: [CommonModule, FormsModule,RouterLink],
     templateUrl: './brand-list.html',
     styleUrl: './brand-list.css',
 })

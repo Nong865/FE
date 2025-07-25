@@ -1,0 +1,13 @@
+<div class="container mt-4" *ngIf="brand">
+  <h2 class="mb-3">Chi tiết thương hiệu</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>ID:</strong> {{ brand.id }}</li>
+    <li class="list-group-item"><strong>Tên thương hiệu:</strong> {{ brand.name }}</li>
+    <li class="list-group-item"><strong>Mô tả:</strong> {{ brand.origin }}</li>
+    <li class="list-group-item">
+  <strong>Trạng thái:</strong>
+  <span [ngClass]="brand.status ? 'text-success' : 'text-danger'">
+    {{ brand.status ? 'Hiển thị' : 'Ẩn' }}
+  </span>
+  </ul>
+</div>

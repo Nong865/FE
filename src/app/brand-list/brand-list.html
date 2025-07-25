@@ -12,7 +12,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let brand of filterBrands()">
-        <td>{{ brand.id }}</td>
+        <td>
+          <a [routerLink]="['/brand', brand.id, 'detail']" >
+            {{ brand.id }}
+          </a>
+        </td>
         <td>{{ brand.name }}</td>
         <td>{{ brand.origin }}</td>
         <td [ngStyle]="{ color: brand.status === 'active' ? 'green' : 'red' }">
