@@ -9,6 +9,7 @@ import { BrandDetail } from './brand-detail/brand-detail';
 import { UserList } from './user-list/user-list';
 import { UserDetail } from './user-detail/user-detail';
 import { BrandCreate } from './brand-create/brand-create';
+import { ProductUpdate } from './product-update/product-update';
 export const routes: Routes = [
     {path: "",
      component: ProductList},
@@ -24,6 +25,9 @@ export const routes: Routes = [
         component: ProductDetail},
     {path: 'product/create',
         component: ProductCreate},
+    {
+    path: 'products/update/:id',
+        component: ProductUpdate},
     {path: 'brand/create',
         component: BrandCreate},
     { path: 'category/:id/detail', 

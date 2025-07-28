@@ -7,7 +7,9 @@
         <th>ID</th>
         <th>Name</th>
         <th>Price</th>
+        <th>Img</th>
         <th>Status</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -19,10 +21,23 @@
           </td>
         <td>{{ product.name }}</td>
         <td>${{ product.price }}</td>
+        <td><img [src]="product.image" [alt]="product.name ||  'Ảnh sản phẩm' " class="product-image" width="100px" /></td>
         <td [ngStyle]="{ color: product.inStock ? 'green' : 'red' }">
           {{ product.inStock ? "In Stock" : "Out of Stock" }}
         </td>
+        <td>
+          <button 
+            class="btn btn-primary"
+            [routerLink]="['/product/create', product.id]"
+            >Thêm</button>
+          <button 
+            class="btn btn-warning"
+            [routerLink]="['/products/update', product.id]"
+            >Sửa</button>
+          <button class="btn btn-danger">Xóa</button>
+        </td>
       </tr>
+      
     </tbody>
   </table>
 </div>

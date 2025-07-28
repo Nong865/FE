@@ -10,6 +10,7 @@
         <th>Phone</th>
         <th>Role</th>
         <th>Status</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +28,10 @@
           <span [ngClass]="user.status ? 'text-success' : 'text-danger'">
             {{ user.status ? 'Hoạt động' : 'Bị khóa' }}
           </span>
+        </td>
+        <td>
+          <button class="btn btn-primary">Thêm</button>
+          <button class="btn btn-danger">Xóa</button>
         </td>
       </tr>
     </tbody>

@@ -8,6 +8,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Status</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +22,10 @@
         <td>{{ category.description }}</td>
         <td [ngStyle]="{ color: category.status === 'active' ? 'green' : 'red' }">
           {{ category.status }}
+        </td>
+        <td>
+          <button class="btn btn-primary">Thêm</button>
+          <button class="btn btn-danger">Xóa</button>
         </td>
       </tr>
     </tbody>

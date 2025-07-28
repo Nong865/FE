@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { routes } from '../app.routes';
 
 @Component({
   selector: 'app-brand-create',

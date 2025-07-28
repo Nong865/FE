@@ -6,8 +6,10 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Image</th>
         <th>Origin</th>
         <th>Status</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -18,9 +20,14 @@
           </a>
         </td>
         <td>{{ brand.name }}</td>
+        <td><img [src]="brand.image" [alt]="brand.name ||  'Ảnh thương hiệu' " class="brand-image" width="100px"  height="100px"/></td>
         <td>{{ brand.origin }}</td>
         <td [ngStyle]="{ color: brand.status === 'active' ? 'green' : 'red' }">
           {{ brand.status }}
+        </td>
+        <td>
+          <button class="btn btn-primary">Thêm</button>
+          <button class="btn btn-danger">Xóa</button>
         </td>
       </tr>
     </tbody>
