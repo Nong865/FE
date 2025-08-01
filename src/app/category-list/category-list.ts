@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { Category, CategoryService } from '../category-services/category.service';
 
 @Component({
     selector: 'app-category-list',
@@ -11,17 +12,39 @@ import { RouterLink } from '@angular/router';
     styleUrl: './category-list.css',
 })
 export class CategoryList {
-    categories = [
-    { id: 1, name: 'Laptop', description: 'Các dòng laptop mới nhất', status: 'active' },
-    { id: 2, name: 'Điện thoại', description: 'Smartphone chính hãng', status: 'active' },
-    { id: 3, name: 'Phụ kiện', description: 'Tai nghe, sạc,...', status: 'inactive' },
-    { id: 4, name: 'Máy tính bảng', description: 'Tablet đa dạng', status: 'active' }
-  ];
-  filterText = '';
-
-  filterCategories() {
-    return this.categories.filter((category) =>
-      category.name.toLowerCase().includes(this.filterText.toLowerCase())
-    );
-  }
+    categories: Category[] = [];
+    
+      filterText = '';
+    
+      constructor(private categoryService: CategoryService) {}
+    
+      ngOnInit(): void {
+        this.categoryService.getAllCategory().subscribe({
+            next: (data) => {
+              console.log(data);
+              this.categories = data;
+            },
+            error: (err) => {
+              console.log(err);
+            }
+        });
+      }
+      filterCategories() {
+        return this.categories.filter((category) =>
+          category.name.toLowerCase().includes(this.filterText.toLowerCase())
+        );
+      }
+      selectedCategory?: Category;
+      findCategoryById(id: number) {
+      this.categoryService.getCategoryId(id).subscribe({
+        next: (category) => {
+          this.selectedCategory = category;
+          console.log('Tìm thấy:', category);
+        },
+        error: (err) => {
+          this.selectedCategory = undefined;
+          console.log('Không tìm thấy danh muc với id:', id);
+        }
+      });
+      }
 }

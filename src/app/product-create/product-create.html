@@ -1,20 +1,20 @@
 
 <form #productForm="ngForm" (ngSubmit)="handleSubmit(productForm)">
 <div class="mb-3">
-    <label for="title" class="form-label">Product Title</label>
+    <label for="name" class="form-label">Product Name</label>
     <input 
         type="text" 
         class="form-control" 
-        id="title" 
-        name="title" 
+        id="name" 
+        name="name" 
         required
         minlength="3"
-        [(ngModel)]="product.title"
-        [ngClass]="{'is-invalid': title.invalid && title.touched}"
-        #title="ngModel"
+        [(ngModel)]="product.name"
+        [ngClass]="{'is-invalid': name.invalid && name.touched}"
+        #name="ngModel"
         />
-        <div *ngIf="title.invalid && title.touched" class="invalid-feedback">
-            <div *ngIf="title.errors?.['required']">Title is required</div>
+        <div *ngIf="name.invalid && name.touched" class="invalid-feedback">
+            <div *ngIf="name.errors?.['required']">name is required</div>
         </div>
 </div>
 <div class="mb-3">

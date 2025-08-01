@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from '../product-services/product.service';
 
 @Component({
   selector: 'app-product-update',
@@ -11,11 +12,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductUpdate {
       productForm : FormGroup;
-      productId: number | null = null;
+      productId: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private router: Router
   ) {
     this.productForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
@@ -23,20 +26,30 @@ export class ProductUpdate {
       price: ['', [Validators.required, Validators.min(3)]],
     });
   }
+  
   ngOnInit(){
-    this.productId = Number(this.route.snapshot.paramMap.get('id'));
-    const  products = JSON.parse(localStorage.getItem('products') || '[]');
-    const product = products.find((p: any) => p.id === this.productId);
-    if(product){
+    this.productId = String(this.route.snapshot.paramMap.get('id'));
+    if (this.productId) {
+    this.productService.getProductId(this.productId).subscribe(product => {
       this.productForm.patchValue({
-        name: product.name, 
+        name: product.name,
         image: product.image,
         price: product.price,
       });
-    }
+    });
+  }
   }
   handleSubmit() {
-    console.log(this.productForm.value);
-    
+    if (this.productForm.valid && this.productId) {
+    this.productService.updateProduct(this.productId, this.productForm.value).subscribe({
+      next: () => {
+        alert('Cập nhật thành công!');
+        window.location.href = '/products'; // hoặc dùng this.router.navigate(['/products']);
+      },
+      error: () => {
+        alert('Cập nhật thất bại!');
+      }
+    });
+  }
   }
 }
