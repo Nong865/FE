@@ -27,6 +27,12 @@
         </td>
         <td>
           <button 
+              class="btn btn-success"
+              (click)="addToCart(product)"
+            >
+            Add to Cart
+          </button>
+          <button 
             class="btn btn-primary"
             [routerLink]="['/product/create']"
             >Thêm</button>
@@ -34,7 +40,12 @@
             class="btn btn-warning"
             [routerLink]="['/products/update', product.id]"
             >Sửa</button>
-          <button class="btn btn-danger">Xóa</button>
+          <button 
+  class="btn btn-danger"
+  (click)="product.id && deleteProduct(product.id)"
+
+>Xoá</button>
+
         </td>
       </tr>
       

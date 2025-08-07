@@ -1,0 +1,49 @@
+<h2>Order List</h2>
+
+<input [(ngModel)]="filterText" placeholder="Filter by order ID or status" />
+
+<div *ngIf="filterOrders().length > 0; else noOrders">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User ID</th>
+        <th>Date</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of filterOrders()">
+        <td>
+          <a [routerLink]="['/order', order.id, 'detail']">
+            {{ order.id }}
+          </a>
+        </td>
+        <td>{{ order.userId }}</td>
+        <td>{{ order.date }}</td>
+        <td>{{ order.total | currency:'VND' }}</td>
+        <td [ngStyle]="{ color: order.status === 'delivered' ? 'green' : (order.status === 'pending' ? 'orange' : 'red') }">
+          {{ order.status }}
+        </td>
+        <td>
+          <button 
+            class="btn btn-warning"
+            [routerLink]="['/orders/update', order.id]">
+            Sửa
+          </button>
+          <button 
+            class="btn btn-danger" *ngIf="order.id"
+            (click)="order.id && deleteOrder(order.id)">
+            Xoá
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noOrders>
+  <p>No orders match the filter.</p>
+</ng-template>

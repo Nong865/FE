@@ -35,6 +35,7 @@ export class ProductUpdate {
         name: product.name,
         image: product.image,
         price: product.price,
+        inStock: product.inStock,
       });
     });
   }
@@ -44,7 +45,7 @@ export class ProductUpdate {
     this.productService.updateProduct(this.productId, this.productForm.value).subscribe({
       next: () => {
         alert('Cập nhật thành công!');
-        window.location.href = '/products'; // hoặc dùng this.router.navigate(['/products']);
+        this.router.navigate(['/products']);
       },
       error: () => {
         alert('Cập nhật thất bại!');

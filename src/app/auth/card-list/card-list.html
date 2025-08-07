@@ -1,0 +1,25 @@
+<h2>Card List</h2>
+<button routerLink="/cards/create" class="btn btn-primary mb-2">Thêm</button>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let card of cards">
+      <td>{{ card.id }}</td>
+      <td>{{ card.title }}</td>
+      <td>{{ card.description }}</td>
+      <td><img [src]="card.image" alt="card" width="80"></td>
+      <td>
+        <button class="btn btn-warning" [routerLink]="['/cards/update', card.id]">Sửa</button>
+        <button class="btn btn-danger" (click)="deleteCard(card.id)">Xoá</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

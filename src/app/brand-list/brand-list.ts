@@ -47,4 +47,18 @@ export class BrandList{
         }
       });
       }
+      deleteBrand(id: number) {
+  if (confirm('Bạn có chắc muốn xoá sản phẩm này không?')) {
+    this.brandService.deleteBrand(id).subscribe({
+      next: () => {
+        // Sau khi xoá thành công, cập nhật lại danh sách
+        this.brands = this.brands.filter(brand => brand.id !== id);
+        console.log('Xoá thành công sản phẩm có id:', id);
+      },
+      error: (err : any ) => {
+        console.error('Lỗi khi xoá sản phẩm:', err);
+      }
+    });
+  }
+  }
 }

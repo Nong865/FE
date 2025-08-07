@@ -24,7 +24,7 @@ export class ProductCreate {
     if(!productForm.invalid){
       this.productService.addProduct(this.product).subscribe({
         next: () => {
-          alert('Them thanh cong!');
+          alert('Thêm thành công!');
           this.router.navigate(['/products']);
         },
         error: () => {

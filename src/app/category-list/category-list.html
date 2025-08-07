@@ -24,8 +24,9 @@
           {{ category.status }}
         </td>
         <td>
-          <button class="btn btn-primary">Thêm</button>
-          <button class="btn btn-danger">Xóa</button>
+          <button class="btn btn-primary"[routerLink]="['/categories/create']">Thêm</button>
+          <button class="btn btn-warning"[routerLink]="['/categories/update', category.id]">Sửa</button>
+          <button class="btn btn-danger"(click)="category.id && deleteCategory(category.id)">Xoá</button>
         </td>
       </tr>
     </tbody>

@@ -1,0 +1,7 @@
+<h2>Cập nhật Card</h2>
+<form (ngSubmit)="updateCard()">
+  <input [(ngModel)]="card.title" name="title" />
+  <input [(ngModel)]="card.description" name="description" />
+  <input [(ngModel)]="card.image" name="image" />
+  <button type="submit" class="btn btn-success">Cập nhật</button>
+</form>

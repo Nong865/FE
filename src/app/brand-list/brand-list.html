@@ -26,13 +26,15 @@
           {{ brand.status }}
         </td>
         <td>
-          <button class="btn btn-primary">Thêm</button>
-          <button class="btn btn-danger">Xóa</button>
+          <button class="btn btn-primary"[routerLink]="['/brand/create']">Thêm</button>
+          <button class="btn btn-warning"[routerLink]="['/brands/update', brand.id]">Sửa</button>
+          <button class="btn btn-danger"(click)="brand.id && deleteBrand(brand.id)">Xoá</button>
         </td>
+
       </tr>
     </tbody>
   </table>
 </div>
 <ng-template #noBrands>
-  <p>No categories match the filter.</p>
+  <p>No brands match the filter.</p>
 </ng-template>

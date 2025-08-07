@@ -19,6 +19,16 @@ export class BrandService {
     return this.http.get<Brand[]>('http://localhost:3001/brands');
   }
   getBrandId(id:number): Observable<Brand> {
-        return this.http.get<Brand>(`http://localhost:3001/products/${id}`);
-    }
+      return this.http.get<Brand>(`http://localhost:3001/brands/${id}`);
+  }
+  
+  addBrand(brand: Brand) {
+   return this.http.post<Brand>('http://localhost:3001/brands', brand);
+  }
+  updateBrand(id: string, brand: Brand) {
+   return this.http.put<Brand>(`http://localhost:3001/brands/${id}`, brand);
+  }
+  deleteBrand(id: number) {
+   return this.http.delete(`http://localhost:3001/brands/${id}`);
+  }
 }

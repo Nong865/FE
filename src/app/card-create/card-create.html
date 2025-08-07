@@ -1,0 +1,7 @@
+<h2>Thêm Card mới</h2>
+<form (ngSubmit)="createCard()">
+  <input [(ngModel)]="card.title" name="title" placeholder="Tiêu đề" required />
+  <input [(ngModel)]="card.description" name="description" placeholder="Mô tả" required />
+  <input [(ngModel)]="card.image" name="image" placeholder="URL ảnh" required />
+  <button class="btn btn-success" type="submit">Tạo</button>
+</form>

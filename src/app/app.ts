@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { SideBar } from './sidebar/sidebar';
+import {  RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { Sidebar } from './sidebar/sidebar';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink ,SideBar],
+  imports: [RouterOutlet, RouterLink ,Sidebar,FormsModule,RouterModule],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

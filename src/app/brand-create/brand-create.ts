@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { routes } from '../app.routes';
+import { BrandService } from '../brand-services/brand.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-brand-create',
@@ -13,11 +15,23 @@ export class BrandCreate {
   brand = {
     name: '',
     origin: '',
-    status: true
+    image: '',
+    status: '',
   };
-  handleSubmit(brandForm: NgForm) {
+
+  constructor(private brandService: BrandService, private router: Router) {}
+   handleSubmit(brandForm: NgForm) {
     console.log('brandForm',brandForm);
     if(!brandForm.invalid){
+      this.brandService.addBrand(this.brand).subscribe({
+        next: () => {
+          window.alert('Thêm thành công!');
+          this.router.navigate(['/brands']);
+        },
+        error: () => {
+          alert('Thêm sản phẩm thất bại!');
+        }
+      })
     }
   }
 }

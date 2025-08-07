@@ -33,12 +33,23 @@
         </div>
 </div>
 <div class="mb-3">
-    <label for="Status" >Status</label>
+    <label for="image" class="form-label">Brand Image</label>
     <input 
-        type="checkbox" 
-        class="form-check-input" 
-        id="Status" 
-        name="Status" 
+        type="text" 
+        class="form-control" 
+        id="image"  
+        name="image" 
+        required
+        [(ngModel)]="brand.image"
+        />
+</div>
+<div class="mb-3">
+    <label for="brand" >Category Status</label>
+    <input 
+        type="text" 
+        class="form-control" 
+        id="status" 
+        name="status" 
         [(ngModel)]="brand.status"
         />
 </div>

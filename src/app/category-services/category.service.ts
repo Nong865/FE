@@ -20,6 +20,16 @@ export class CategoryService {
         return this.http.get<Category[]>('http://localhost:3001/categories')
     }
     getCategoryId(id:number): Observable<Category> {
-          return this.http.get<Category>(`http://localhost:3001/products/${id}`);
+          return this.http.get<Category>(`http://localhost:3001/categories/${id}`);
+
     }
-}
+   addCategory(category: Category) {
+     return this.http.post<Category>('http://localhost:3001/categories', category);
+     }
+     updateCategory(id: string, category: Category) {
+      return this.http.put<Category>(`http://localhost:3001/categories/${id}`, category);
+      }
+     deleteCategory(id: number) {
+      return this.http.delete(`http://localhost:3001/categories/${id}`);
+    }
+  }

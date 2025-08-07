@@ -1,0 +1,44 @@
+<form [formGroup]="brandForm" (ngSubmit)="handleSubmit()">
+  <div class="mb-3">
+    <label for="name" class="form-label">Brand Title</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="name"
+      [ngClass]="{
+        'is-invalid':
+          brandForm.get('name')?.invalid && brandForm.get('name')?.touched
+      }"
+    />
+    <div
+      *ngIf="
+        brandForm.get('name')?.invalid && brandForm.get('name')?.touched
+      "
+      class="invalid-feedback"
+    >
+      <div *ngIf="brandForm.get('name')?.errors?.['required']">
+        Name is required.
+      </div>
+      <div *ngIf="brandForm.get('name')?.errors?.['minlength']">
+        Name is min > 3 character.
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">brand description</label>
+    <input type="text" class="form-control" formControlName="description" />
+  </div>
+
+    <div class="mb-3">
+    <label for="image" class="form-label">Product Image</label>
+    <input type="text" class="form-control" formControlName="image" />
+  </div>
+
+   <div class="mb-3">
+    <label for="status" class="form-label">brand status</label>
+    <input type="text" class="form-control" formControlName="status" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
