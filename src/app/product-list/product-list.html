@@ -7,27 +7,48 @@
         <th>ID</th>
         <th>Name</th>
         <th>Price</th>
+        <th>Img</th>
         <th>Status</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of filterProducts()">
         <td>
-          <!-- chen product.id trong url -->
-          <!-- /product/1/detail -->
-          <!-- lay dược :id từ url trong product detail -->
-          <!-- [routerLink] -->
-          <a [routerLink]="['/product', product.id, 'detail']">
+          <a [routerLink]="['/product', product.id, 'detail']" >
             {{ product.id }}
           </a>
-        </td>
-        <!-- LAPTOP -->
-        <td>{{ product.name | uppercase }}</td>
-        <td>{{ product.price | currency : "VND" }}</td>
+          </td>
+        <td>{{ product.name }}</td>
+        <td>${{ product.price }}</td>
+        <td><img [src]="product.image" [alt]="product.name ||  'Ảnh sản phẩm' " class="product-image" width="100px" /></td>
         <td [ngStyle]="{ color: product.inStock ? 'green' : 'red' }">
           {{ product.inStock ? "In Stock" : "Out of Stock" }}
         </td>
+        <td>
+          <button 
+              class="btn btn-success"
+              (click)="addToCart(product)"
+            >
+            Add to Cart
+          </button>
+          <button 
+            class="btn btn-primary"
+            [routerLink]="['/product/create']"
+            >Thêm</button>
+          <button 
+            class="btn btn-warning"
+            [routerLink]="['/products/update', product.id]"
+            >Sửa</button>
+          <button 
+  class="btn btn-danger"
+  (click)="product.id && deleteProduct(product.id)"
+
+>Xoá</button>
+
+        </td>
       </tr>
+      
     </tbody>
   </table>
 </div>

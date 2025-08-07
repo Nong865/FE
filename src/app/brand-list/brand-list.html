@@ -1,21 +1,40 @@
-<h2>user List</h2>
+<h2>Brand List</h2>
+<input [(ngModel)]="filterText" placeholder="Filter by name" />
+<div *ngIf="filterBrands().length > 0; else noBrands">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Origin</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let brand of filterBrands()">
+        <td>
+          <a [routerLink]="['/brand', brand.id, 'detail']" >
+            {{ brand.id }}
+          </a>
+        </td>
+        <td>{{ brand.name }}</td>
+        <td><img [src]="brand.image" [alt]="brand.name ||  'Ảnh thương hiệu' " class="brand-image" width="100px"  height="100px"/></td>
+        <td>{{ brand.origin }}</td>
+        <td [ngStyle]="{ color: brand.status === 'active' ? 'green' : 'red' }">
+          {{ brand.status }}
+        </td>
+        <td>
+          <button class="btn btn-primary"[routerLink]="['/brand/create']">Thêm</button>
+          <button class="btn btn-warning"[routerLink]="['/brands/update', brand.id]">Sửa</button>
+          <button class="btn btn-danger"(click)="brand.id && deleteBrand(brand.id)">Xoá</button>
+        </td>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Ten thuong hieu</th>
-      <th>Mo ta</th>
-      <th>Trang thai</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{ user.id }}</td>
-      <td>{{ user.ten_thuong_hieu }}</td>
-      <td>{{ user.mo_ta }}</td>
-      <td>{{ user.trang_thai}}</td>
-    </tr>
-  </tbody>
-</table>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noBrands>
+  <p>No brands match the filter.</p>
+</ng-template>

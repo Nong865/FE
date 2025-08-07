@@ -2,25 +2,49 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { User, UserService } from '../user-services/user.service';
 
 @Component({
-  selector: 'app-user-list',
-  imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './user-list.html',
-  styleUrl: './user-list.css',
+    selector: 'app-user-list',
+    standalone: true,
+    imports : [CommonModule, FormsModule, RouterLink],
+    templateUrl: './user-list.html',
+    styleUrl: './user-list.css',
 })
 export class UserList {
-  users = [
-    {id: 1, ten_nguoi_dung: "Nguyen Van A",email: "Nguyenvana@gmail.com",mat_khau: "123456"},
-    {id: 2, ten_nguoi_dung: "Tran Thi B",email: "Tranthib@gmail.com",mat_khau: "abcdef"},
-     {id: 3, ten_nguoi_dung: "Le Van C",email: "Levanc@gamil.com",mat_khau: "qwerty"},
-  ];
-
-  filterText = '';
-
-  filterusers() {
-    return this.users.filter((user) =>
-      user.ten_nguoi_dung.toLowerCase().includes(this.filterText.toLowerCase())
-    );
-  }
+     users: User[] = [];
+    
+      filterText = '';
+    
+      constructor(private userService: UserService) {}
+    
+      ngOnInit(): void {
+        this.userService.getAllUser().subscribe({
+            next: (data) => {
+              console.log(data);
+              this.users = data;
+            },
+            error: (err) => {
+              console.log(err);
+            }
+        });
+      }
+      filterUsers() {
+        return this.users.filter((user) =>
+          user.name.toLowerCase().includes(this.filterText.toLowerCase())
+        );
+      }
+      selectedUser?: User;
+      findUserById(id: number) {
+      this.userService.getUserId(id).subscribe({
+        next: (user) => {
+          this.selectedUser = user;
+          console.log('Tìm thấy:', user);
+        },
+        error: (err) => {
+          this.selectedUser = undefined;
+          console.log('Không tìm thấy nguoi dung với id:', id);
+        }
+      });
+      }
 }

@@ -1,22 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">MyShop</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item"><a class="nav-link" routerLink="/">Trang chủ</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/login">Đăng nhập</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/register">Đăng ký</a></li>
-      </ul>
-    </div>
+<div class="d-flex">
+  <app-sidebar></app-sidebar>
+  <div class="flex-grow-1 p-4">
+    <router-outlet></router-outlet>
   </div>
-</nav>
-<router-outlet></router-outlet>
-<button class="btn btn-success">Bootstrap hoạt động</button>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $('.btn-success').click(function() {
-      alert('Bootstrap hoạt động!');
-    });
-  });
+</div>

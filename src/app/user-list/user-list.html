@@ -1,20 +1,42 @@
-<h2>user List</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Ten nguoi dung</th>
-      <th>Email</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{ user.id }}</td>
-      <td>{{ user.ten_nguoi_dung }}</td>
-      <td>{{ user.email }}</td>
-
-    </tr>
-  </tbody>
-</table>
+<h2>User List</h2>
+<input [(ngModel)]="filterText" placeholder="Filter by name" />
+<div *ngIf="filterUsers().length > 0; else noUser">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filterUsers()">
+        <td>
+          <a [routerLink]="['/user', user.id, 'detail']" >
+            {{ user.id }}
+          </a>
+        </td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <span [ngClass]="user.status ? 'text-success' : 'text-danger'">
+            {{ user.status ? 'Hoạt động' : 'Bị khóa' }}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-primary">Thêm</button>
+          <button class="btn btn-danger">Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noUser>
+  <p>No user match the filter.</p>
+</ng-template>

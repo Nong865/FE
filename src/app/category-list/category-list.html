@@ -1,16 +1,37 @@
 <h2>Category List</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let category of categories">
-      <td>{{ category.id }}</td>
-      <td>{{ category.name }}</td>
-    </tr>
-  </tbody>
-</table>
+<input [(ngModel)]="filterText" placeholder="Filter by name" />
+<div *ngIf="filterCategories().length > 0; else noCategories">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of filterCategories()">
+        <td>
+          <a [routerLink]="['/category', category.id, 'detail']" >
+            {{ category.id }}
+          </a>
+        </td>
+        <td>{{ category.name }}</td>
+        <td>{{ category.description }}</td>
+        <td [ngStyle]="{ color: category.status === 'active' ? 'green' : 'red' }">
+          {{ category.status }}
+        </td>
+        <td>
+          <button class="btn btn-primary"[routerLink]="['/categories/create']">Thêm</button>
+          <button class="btn btn-warning"[routerLink]="['/categories/update', category.id]">Sửa</button>
+          <button class="btn btn-danger"(click)="category.id && deleteCategory(category.id)">Xoá</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noCategories>
+  <p>No categories match the filter.</p>
+</ng-template>

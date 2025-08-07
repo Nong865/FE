@@ -1,25 +1,64 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { RouterLink } from "@angular/router";
+import { Brand, BrandService } from "../brand-services/brand.service";
 
 @Component({
-  selector: 'app-brand-list',
-  imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './brand-list.html',
-  styleUrl: './brand-list.css',
+    selector: 'app-brand-list',
+    standalone: true,
+    imports: [CommonModule, FormsModule,RouterLink],
+    templateUrl: './brand-list.html',
+    styleUrl: './brand-list.css',
 })
-export class BrandList {
-  brands = [
-    { id: 1, ten_thuong_hieu: 'Thương Hiệu A', mo_ta: "Thương hiệu thời trang nổi tiếng với các sản phẩm chất lượng cao.", trang_thai: 1 },
-    { id: 2, ten_thuong_hieu: 'Thương Hiệu B', mo_ta: "Thương hiệu chuyên cung cấp các sản phẩm thời trang hiện đại và phong cách.", trang_thai: 1 },
-  ];
+export class BrandList{
+    brands: Brand[] = [];
 
-  filterText = '';
+    filterText = '';
 
-  filterbrands() {
-    return this.brands.filter((brand) =>
-      brand.ten_thuong_hieu.toLowerCase().includes(this.filterText.toLowerCase())
-    );
+    constructor(private brandService: BrandService) {}
+
+    ngOnInit():  void{
+        this.brandService.getAllBrand().subscribe({
+            next: (data) => {
+                console.log(data);
+                this.brands = data
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        })
+    }
+    filterBrands() {
+        return this.brands.filter((brand) => 
+            brand.name.toLowerCase().includes(this.filterText.toLowerCase())
+        );
+    }
+    selectedBrand?: Brand;
+      findBrandById(id: number) {
+      this.brandService.getBrandId(id).subscribe({
+        next: (brand) => {
+          this.selectedBrand = brand;
+          console.log('Tìm thấy:', brand);
+        },
+        error: (err) => {
+          this.selectedBrand = undefined;
+          console.log('Không tìm thấy thuong hieu với id:', id);
+        }
+      });
+      }
+      deleteBrand(id: number) {
+  if (confirm('Bạn có chắc muốn xoá sản phẩm này không?')) {
+    this.brandService.deleteBrand(id).subscribe({
+      next: () => {
+        // Sau khi xoá thành công, cập nhật lại danh sách
+        this.brands = this.brands.filter(brand => brand.id !== id);
+        console.log('Xoá thành công sản phẩm có id:', id);
+      },
+      error: (err : any ) => {
+        console.error('Lỗi khi xoá sản phẩm:', err);
+      }
+    });
+  }
   }
 }

@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {  RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { Sidebar } from './sidebar/sidebar';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Sidebar],
+  imports: [RouterOutlet, RouterLink ,Sidebar,FormsModule,RouterModule],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App {
   protected title = 'angular-su25';
-  stkChaGuiTien = '100000 trieu';
 }
